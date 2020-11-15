@@ -1,6 +1,8 @@
 const http = require('http');
 const app = require('./app');
 
+
+
 const normalizePort = val => {
     const port = parseInt(val, 10);
   
@@ -43,5 +45,7 @@ const normalizePort = val => {
     console.log('Listening on ' + bind);
   });
   
+
+
   server.listen(port);
   
