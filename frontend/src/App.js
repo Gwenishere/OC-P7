@@ -1,25 +1,21 @@
 import React from 'react';
+import Header from './components/Header';
+import Home from './components/Home';
+import Footer from './components/Footer';
 import './App.css';
-// import Header from './components/Header/Header';
-// import Signup from './components/Signup';
-// import Login from './components/Login';
-// import Home from './Home/Home/Home';
-// brancher à React DOM ?
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import 'bootstrap/dist/css/bootstrap.css';
-// Put any other imports below so that CSS from your
-// components takes precedence over default styles.
-
-// UTILISER AXIOS POUR LES REQUETES 
-
-
-function App() {
-  return (
-    <div>
-      <h1>Coucou</h1>
+class App extends React.Component {
+  
+  render() {
+    return (
+     <div className="maincontainer">
+      <Header></Header>
+      <Home></Home>
+      <Footer></Footer>
     </div>
-  )}
+   )
+  };
+}
+
 export default App;
-
-
-
