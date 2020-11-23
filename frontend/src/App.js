@@ -1,21 +1,34 @@
 import React from 'react';
-import Header from './components/Header';
-import Home from './components/Home';
-import Footer from './components/Footer';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import Header from './components/Header/Header';
+import Home from './components/Home/Home';
+import SignUp from './components/Signup/Signup';
+import Login from './components/Login/Login';
+import PageNotFound from './components/PageNotFound/PageNotFound';
+import Footer from './components/Footer/Footer';
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-class App extends React.Component {
-  
-  render() {
+//import axios from "axios"; // installé
+
+
+  function App() {
     return (
-     <div className="maincontainer">
-      <Header></Header>
-      <Home></Home>
-      <Footer></Footer>
-    </div>
-   )
-  };
-}
+      <Router>
+      <div className="maincontainer">
+        <Header/>
+          <Switch>
+       <Route path="/" exact component={Home} />
+       <Route path="/Login" component={Login}/>
+       <Route path="/Signup" component={SignUp}/>
+       <Route component={PageNotFound} />
+       </Switch>
+       <Footer/>
+      </div>
+      </Router>
+    );
+  }
 
 export default App;
