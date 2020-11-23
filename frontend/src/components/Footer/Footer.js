@@ -5,12 +5,24 @@ class Footer extends React.Component
     render ()
     {
         return (
-        <footer class="jumbotron">
-            <ul>
+        <footer className="d-flex justify-content-around">
+            <div className="footcontainer">
+             <ul>
                 <li>Support technique</li>
-                <li>Conditions d'utilisation</li>
+                <li>Contact</li>
+             </ul>
+            </div>
+            <div className="footcontainer">
+             <ul>
+                <li>Code de conduite</li>
+             </ul>
+            </div>
+            <div className="footcontainer">
+             <ul>
                 <li>Groupomania le site officiel</li>
-            </ul>
+                <li>Actualité CSE</li>
+             </ul>
+            </div>
         </footer>
         )
     }

@@ -1,28 +1,38 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import '../../App.css';
+import Logo from '../../assets/images/icon-left-font-monochrome-white.svg';
 import 'bootstrap/dist/css/bootstrap.css';
 
-class Header extends React.Component
-{
-  render ()
-  {
-    return (
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+
+/**TODO: 
+ * utiliser router et redirect
+ * liens vers comments, profile, deconnexion
+ * un input rechercher?
+ */
+
+ function Header() {
+  return(
+  <nav className="navbar navbar-expand-md navbar-dark">
+    <Link to="/">
+      <img src={Logo}/>
+    </Link>
+    <div className="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul className="navbar-nav">
+      <Link className="nav-link" to="/Login">
+        <button type="button" className="btn btn-outline-info mb-2">
+        <li className="nav-item">Connexion</li>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active" href="#">Accueil <span class="sr-only">(current)</span></a>
-          <a class="nav-link" href="#">Discussions</a>
-          <form class="form-inline">
-           <input class="form-control mr-sm-2" type="search" placeholder="taper ici" aria-label="Search"/>
-           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-          </form>
-        <a class="nav-link" href="#">Profil</a>
-        <a class="nav-link " href="#">Déconnexion</a>
-        </div>
-    </div>
-    </nav>
-    )
-  }
+       </Link>
+       <Link className="nav-link " to="/Signup">
+        <button type="button" className="btn btn-secondary mb-2">
+        <li className="nav-item">Inscription</li>
+        </button>
+       </Link>
+      </ul>
+      </div>
+  </nav>
+  )
 }
-export default Header;
+
+ export default Header
