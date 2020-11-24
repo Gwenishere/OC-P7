@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize'); // installé et mysql aussi
+//const Sequelize = require('sequelize'); // installé et mysql aussi
 const express = require('express'); // installé
 const app = express();  
 const bodyParser = require('body-parser'); // installé
@@ -22,7 +22,7 @@ var con = mysql.createConnection({
 
 con.connect(function(err) {
   if (err) throw err;
-  console.log("Connected!");
+  console.log("Vous êtes connecté");
 });
 
 // en - tête CORS Access-Control-Allow-Origin
