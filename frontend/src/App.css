@@ -173,10 +173,9 @@ button.active {
 color: #091F43;
 }
 
-input {
-  color: #AEAEAE;
+input[type=email], input[type=password] {
+  border: #091F43 1px solid;
 }
-
 
 footer{
   background: #AEAEAE;

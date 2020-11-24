@@ -21,8 +21,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
         <Header/>
           <Switch>
        <Route path="/" exact component={Home} />
-       <Route path="/Login" component={Login}/>
-       <Route path="/Signup" component={SignUp}/>
+       <Route path="/login" component={Login}/>
+       <Route path="/signup" component={SignUp}/>
        <Route component={PageNotFound} />
        </Switch>
        <Footer/>

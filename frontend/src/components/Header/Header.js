@@ -19,12 +19,12 @@ import 'bootstrap/dist/css/bootstrap.css';
     </Link>
     <div className="collapse navbar-collapse" id="collapsibleNavbar">
       <ul className="navbar-nav">
-      <Link className="nav-link" to="/Login">
+      <Link className="nav-link" to="/login">
         <button type="button" className="btn btn-outline-info mb-2">
         <li className="nav-item">Connexion</li>
       </button>
        </Link>
-       <Link className="nav-link " to="/Signup">
+       <Link className="nav-link " to="/signup">
         <button type="button" className="btn btn-secondary mb-2">
         <li className="nav-item">Inscription</li>
         </button>

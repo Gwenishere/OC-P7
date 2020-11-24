@@ -9,18 +9,21 @@ export default class Login extends Component {
 				<h1>Connexion</h1>
 			  </div>
                 <div className="form-group">
-                    <label>Votre email</label>
-                    <input type="email" name="email" required="true" className="form-control" placeholder="____example@groupomania.com____" />
+                    <label htmlFor="email">Votre email</label>
+                    <input type="email" name="email" required={true} className="form-control" />
                 </div>
                 <div className="form-group">
-                    <label>Mot de passe</label>
-                    <input type="text" required="true" className="form-control" placeholder="____mot de passe____" />
+                    <label htmlFor="password">Mot de passe</label>
+                    <input type="password" required={true} id="password" className="form-control" />
                 </div>
                 <div className="form-group">
                     <div className="custom-control custom-checkbox">
                         <input type="checkbox" className="custom-control-input" id="customCheck1" />
                         <label className="custom-control-label" htmlFor="customCheck1">Se souvenir de moi</label>
                     </div>
+                </div>
+                <div>
+                <small id="emailHelp" className="form-text text-muted">Ne partagez pas vos accès à ce site</small>
                 </div>
                 <button type="submit" className="btn btn-outline-info col-md-12  text-center" >SE CONNECTER
                 </button>
