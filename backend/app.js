@@ -17,7 +17,7 @@ var con = mysql.createConnection({
   host: "localhost",
   user: "admin",
   password: "admin",
-  database: "groupomania"
+  database: "groupomania_dev"
 });
 
 con.connect(function(err) {
