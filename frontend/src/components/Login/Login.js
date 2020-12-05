@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Axios from 'axios';
-import { withRouter } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import "../../App.css";
+import Header from '../Header/Header';
 
 function Login() {
 
@@ -25,6 +26,8 @@ function Login() {
       };
 
         return (
+            <div>
+            <Header/>
             <div className="myform form col-md-4 mx-auto">
              <form  method="post">
               <div className="col-md-12 text-center cardtitle">
@@ -64,6 +67,7 @@ function Login() {
                 </p>
              </form>
                 <h2>Bienvenue{LoginStatus}</h2>
+            </div>
             </div>
         );
 }

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 html {
 box-sizing: border-box;
@@ -30,6 +31,11 @@ body::-webkit-scrollbar-thumb {
 h1 {
   font-family: 'Kanit', sans-serif;
   margin-bottom: 5em;
+}
+
+.accueil {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
 
 .App-header {
@@ -88,6 +94,10 @@ img {
   padding-top: 40px;
   opacity: 1;
   margin-bottom: 3em;
+}
+.search {
+  font-size:24px;
+  border-radius: .25rem ;
 }
 
 nav {
@@ -176,7 +186,27 @@ color: #091F43;
 input[type=email], input[type=password] {
   border: #091F43 1px solid;
 }
+input[type=search]{
+ height: 40px;
+ border-radius: 5px;
+ border: 1px solid;
+ padding: 6px 12px 6px 12px;
+}
+.post_avatar {
+  margin-right: 2em;
+}
 
+.btnPost {
+  margin-top: 2em;
+  margin-left: 2em;
+}
+
+#description #title {
+  font-family: 'Kanit', sans-serif;
+}
+#title {
+  border: solid #AEAEAE 1px ;
+}
 footer{
   background: #AEAEAE;
   padding: 32px 0;

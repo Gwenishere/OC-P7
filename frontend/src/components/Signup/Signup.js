@@ -2,13 +2,18 @@ import '../../App.css';
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import Axios from 'axios';
+import Header from '../Header/Header';
+import { Redirect } from "react-router-dom";
   
-function Signup() {
+function Signup({variant}) {
 
   const [emailReg, setEmailReg] = useState('');
   const [passwordReg, setPasswordReg] = useState(''); //initialisation des valeurs d'état d'e-mail et de mot de passe à l'aide du hook useState
+  
+  const [redirection, setRedirection] = useState(variant ? true : false); // pas sûre de ça
 
-  const register = () => {
+
+  const signup = () => {
     Axios.post('http://localhost:3000/signup', {
       email: emailReg,
       password: passwordReg
@@ -19,7 +24,11 @@ function Signup() {
   };
 
   return (
+
+    <div>
+      <Header/>
     <div className="myform form col-md-4 mx-auto">
+      
       <form className="Registration">
       <div className="col-md-12 text-center cardtitle">
         <h1>Inscription</h1>
@@ -49,12 +58,14 @@ function Signup() {
         </div>
       </form>
       <button type="submit"
-      onClick={register}
+      onClick={signup}
       className="btn btn-secondary mb-2">
         JE M'INSCRIS
+        {redirection&&<Redirect to ="/post" />}
       </button>
+    </div>
     </div>
   )
 }
 
-export default withRouter (Signup)
+export default withRouter (Signup) // Router ok ou en trop?
