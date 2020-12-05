@@ -1,4 +1,3 @@
-//const Sequelize = require('sequelize'); // installé et mysql aussi
 const express = require('express'); // installé
 const app = express();  
 const bodyParser = require('body-parser'); // installé
@@ -13,17 +12,31 @@ const userRoutes = require('./routes/user');
 const postsRoutes = require('./routes/posts');
 const commentsRoutes = require('./routes/comments');
 
-var con = mysql.createConnection({
+const db = mysql.createConnection({
   host: "localhost",
   user: "admin",
   password: "admin",
   database: "groupomania_dev"
 });
 
-con.connect(function(err) {
+// pour tester
+app.get('/signup', (req, res) => {
+  db.query(
+   "INSERT INTO user (email, password) VALUES ('mail@mail.com', 'Motdep123');",
+     (err, results)=> {
+       console.log(err);
+       res.send(results);
+     }
+  );
+ });
+
+db.connect(function(err) {
   if (err) throw err;
   console.log("Vous êtes connecté");
 });
+
+
+
 
 // en - tête CORS Access-Control-Allow-Origin
 app.use((req, res, next) => {
