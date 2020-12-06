@@ -7,20 +7,15 @@ app.use(helmet());
 const dotenv = require('dotenv');
 dotenv.config(); // installé
 const mysql = require('mysql'); // installé
+const cors = require('cors');
+app.use(cors());
 
-const userRoutes = require('./routes/user');
+const userRoutes = require('./routes/user'); // import de la route
 const postsRoutes = require('./routes/posts');
 const commentsRoutes = require('./routes/comments');
 
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "admin",
-  password: "admin",
-  database: "groupomania_dev"
-});
-
 // pour tester
-app.get('/signup', (req, res) => {
+/*app.get('/signup', (req, res) => {
   db.query(
    "INSERT INTO user (email, password) VALUES ('mail@mail.com', 'Motdep123');",
      (err, results)=> {
@@ -28,15 +23,7 @@ app.get('/signup', (req, res) => {
        res.send(results);
      }
   );
- });
-
-db.connect(function(err) {
-  if (err) throw err;
-  console.log("Vous êtes connecté");
-});
-
-
-
+ });*/
 
 // en - tête CORS Access-Control-Allow-Origin
 app.use((req, res, next) => {
@@ -57,8 +44,8 @@ app.use((req, res, next) => {
   */
  app.use('/images', express.static(path.join(__dirname, 'images')));
 
-//app.use('/api/auth', userRoutes); 
-//app.use('/api/posts', postsRoutes);
-//app.use('api/comments', commentsRoutes);
+app.use('/user', userRoutes); 
+//app.use('/posts', postsRoutes);
+//app.use('/comments', commentsRoutes);
 
 module.exports = app;

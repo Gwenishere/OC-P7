@@ -1,28 +1,30 @@
 const bcrypt = require('bcrypt'); // installé
 const jwt = require('jsonwebtoken'); // installé
 const mysql = require('mysql'); // installé
-const User = require('../models/user.js'); // import modele user 
+const User = require('../models/entity/user.js'); // import modele user 
+
 
 exports.signup = (req, res) => {
-    if(!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,})/.test(req.body.password)) {
+  let user = new User(req.body.user);
+
+  if(!user.checkpassword()) {
         return res.status(400).json({
             message: 'le mot de passe doit contenir 1 minuscule, 1 majuscule, 1 chiffre, 8 caractères'
         });
     }
     if (!req.body) {
-      res.status(400).send({
+     return res.status(400).send({
           message: "Le champs doit être complété"
       });
   };
     // hash le mot de passe
-    bcrypt.hash(req.body.password, 10)
+    bcrypt.hash(user.password, 10)
      .then(hash => {
-     const user = new User({
-         email: req.body.email,
-         password: hash
-     });
+     user.password = hash;
+
     // envoyer les ref utilisateur vers la base de données
-    User.create(user, (err) => {
+    //**FIXME: pas compris la séquence avec manager ! que dois-je faire? */
+    User.manager.create(user, (err) => {
     if (err) {
       res.status(500).send({
         message: "problème lors de la création du compte"
