@@ -7,20 +7,21 @@ import { Redirect } from "react-router-dom";
   
 function Signup({variant}) {
 
-  const [emailReg, setEmailReg] = useState('');
-  const [passwordReg, setPasswordReg] = useState(''); //initialisation des valeurs d'état d'e-mail et de mot de passe à l'aide du hook useState
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState(''); //initialisation des valeurs d'état d'e-mail et de mot de passe à l'aide du hook useState
   
   const [redirection, setRedirection] = useState(variant ? true : false); // pas sûre de ça
 
-
+  //**FIXME: je laisse l'objet ainsi ??, pas compris ! */
   const signup = () => {
-    Axios.post('http://localhost:3000/signup', {
-      email: emailReg,
-      password: passwordReg
+    Axios.post('http://localhost:3000/user/signup', {
+      user:{
+      email: email,
+      password: password
+      }
     }).then((response)=>{
       console.log(response); // pour voir si erreur
-    }
-    )
+    });
   };
 
   return (
@@ -37,7 +38,7 @@ function Signup({variant}) {
          <label htmlFor="email">Votre email</label>
           <input
           onChange={(e) => {
-            setEmailReg(e.target.value);
+            setEmail(e.target.value);
           }}
           type="email" name="email" required={true} className="form-control" id="email" aria-describedby="emailHelp"/>
         </div>
@@ -45,7 +46,7 @@ function Signup({variant}) {
          <label htmlFor="password">Mot de passe</label>
           <input
           onChange={(e) => {
-            setPasswordReg(e.target.value);
+            setPassword(e.target.value);
           }}
           type="password" required={true} className="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Doit contenir au moins 1 chiffre, 1 MAJUSCULE, 1 minuscule, entre 8 et 10 caractères" maxLength={10} />
         </div>

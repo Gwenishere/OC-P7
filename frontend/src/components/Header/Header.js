@@ -4,13 +4,6 @@ import '../../App.css';
 import Logo from '../../assets/images/icon-left-font-monochrome-white.svg';
 import 'bootstrap/dist/css/bootstrap.css';
 
-
-/**TODO: 
- * utiliser router et redirect
- * liens vers comments, profile, deconnexion
- * un input rechercher?
- */
-
  function Header() {
   return(
   <nav className="navbar navbar-expand-md navbar-dark">

@@ -12,7 +12,7 @@ function Login() {
     const [LoginStatus, setLoginStatus] = useState('');
 
     const login = () => {
-        Axios.post('http://localhost:3000/login', {
+        Axios.post('http://localhost:3000/user/login', {
           email: email,
           password: password
         }).then((response)=>{
