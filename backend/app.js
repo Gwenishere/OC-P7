@@ -14,16 +14,7 @@ const userRoutes = require('./routes/user'); // import de la route
 const postsRoutes = require('./routes/posts');
 const commentsRoutes = require('./routes/comments');
 
-// pour tester
-/*app.get('/signup', (req, res) => {
-  db.query(
-   "INSERT INTO user (email, password) VALUES ('mail@mail.com', 'Motdep123');",
-     (err, results)=> {
-       console.log(err);
-       res.send(results);
-     }
-  );
- });*/
+
 
 // en - tête CORS Access-Control-Allow-Origin
 app.use((req, res, next) => {
