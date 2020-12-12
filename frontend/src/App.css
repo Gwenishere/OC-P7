@@ -183,7 +183,7 @@ button.active {
 color: #091F43;
 }
 
-input[type=email], input[type=password] {
+input[type=email], input[type=password], input[type=text]{
   border: #091F43 1px solid;
 }
 input[type=search]{
