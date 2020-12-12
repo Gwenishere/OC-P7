@@ -1,3 +1,4 @@
+// fichier de config
 module.exports = {
   HOST: "localhost",
   USER: "root",

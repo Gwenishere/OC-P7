@@ -7,11 +7,9 @@ const db = mysql.createConnection({
         password: dbConfig.PASSWORD,
         database: dbConfig.DB
 });
-
 //Connection à phpMyAdmin mysql
 db.connect(error => {
   if (error) throw error;
   console.log("Connection réussie à la base de donnée");
 });
-
 module.exports = db;
