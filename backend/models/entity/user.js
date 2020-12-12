@@ -4,7 +4,7 @@
 //  modele db pour un user, user_id créé par mysql
 class User {
     constructor(user) {
-     this.user_id = user.user_id;
+     this.username= user.username;
      this.email = user.email;
      this.password = user.password;
     }
@@ -13,7 +13,5 @@ class User {
         return regex.test(this.password);
     }
 }
-
-
 
 module.exports = User;
