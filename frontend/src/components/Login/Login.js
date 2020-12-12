@@ -13,8 +13,10 @@ function Login() {
 
     const login = () => {
         Axios.post('http://localhost:3000/user/login', {
+          user: {
           email: email,
           password: password
+          }
         }).then((response)=>{
           if (response.data.message) {
               setLoginStatus(response.data.message);             
@@ -66,7 +68,6 @@ function Login() {
                     Oubli <a href="www.google.fr">du mot de passe ?</a>
                 </p>
              </form>
-                <h2>Bienvenue{LoginStatus}</h2>
             </div>
             </div>
         );

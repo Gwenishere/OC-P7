@@ -6,7 +6,8 @@ import Header from '../Header/Header';
 import { Redirect } from "react-router-dom";
   
 function Signup({variant}) {
-
+  
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState(''); //initialisation des valeurs d'état d'e-mail et de mot de passe à l'aide du hook useState
   
@@ -16,6 +17,7 @@ function Signup({variant}) {
   const signup = () => {
     Axios.post('http://localhost:3000/user/signup', {
       user:{
+      username: username,  
       email: email,
       password: password
       }
@@ -25,17 +27,23 @@ function Signup({variant}) {
   };
 
   return (
-
     <div>
       <Header/>
-    <div className="myform form col-md-4 mx-auto">
-      
+    <div className="myform form col-md-4 mx-auto">    
       <form className="Registration">
       <div className="col-md-12 text-center cardtitle">
         <h1>Inscription</h1>
         </div>
         <div className="form-group">
-         <label htmlFor="email">Votre email</label>
+         <label htmlFor="username">Nom utilisateur</label>
+          <input
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
+          type="text" name ="username" required={true} className="form-control" id="username" aria-describedby="userHelp"/>
+        </div>
+        <div className="form-group">
+         <label htmlFor="email">Email</label>
           <input
           onChange={(e) => {
             setEmail(e.target.value);
@@ -68,5 +76,4 @@ function Signup({variant}) {
     </div>
   )
 }
-
 export default withRouter (Signup) // Router ok ou en trop?
