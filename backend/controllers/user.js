@@ -31,20 +31,23 @@ exports.signup = (req, res) => {
     }
     db.query(
         "INSERT INTO user (username, email, password) VALUES (?, ?, ?);", [username, email, password], 
-        (err, results)=> {
-          console.log(err);
-          res.send(results);
-        }
+        (err, results)=> {         
+          if (err) {
+            res.status(500).send({message: 'erreur connection'});
+          } else {
+            res.status(201).send(results);
+          }
+        } 
     );
   }
 /**TODO:
 * bloquer au bout de 5 tentatives du mdp ?
 */
 exports.login = (req, res, next) => {
-    User.findOne({ email: req.body.user.email })
-      .then(user => {
-        if (!user) {
-          return res.status(401).json({ error: 'Utilisateur non trouvé !' });
+  let email = req.body.user.email;
+  let password = req.body.user.password;
+        if (!email || !password) {
+          return res.status(500).json({ error: 'Veuillez compléter les champs' });
         }
         bcrypt.compare(req.body.user.password, user.password)
           .then(valid => {
@@ -59,8 +62,5 @@ exports.login = (req, res, next) => {
                   { expiresIn: '24h' }
               )
             });
-          })
-          .catch(error => res.status(500).json({ error }));
-      })
-      .catch(error => res.status(500).json({ error }));
-  };
+          }).catch(error => res.status(500).json({ error }));
+        }
