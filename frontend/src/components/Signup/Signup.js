@@ -1,18 +1,17 @@
 import '../../App.css';
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Axios from 'axios';
 import Header from '../Header/Header';
-import { Redirect } from "react-router-dom";
+
   
-function Signup({variant}) {
+function Signup() {
   
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState(''); //initialisation des valeurs d'état d'e-mail et de mot de passe à l'aide du hook useState
   
-  const [redirection, setRedirection] = useState(variant ? true : false); // pas sûre de ça
-
+ 
   //**FIXME: je laisse l'objet ainsi ??, pas compris ! */
   const signup = () => {
     Axios.post('http://localhost:3000/user/signup', {
@@ -22,8 +21,10 @@ function Signup({variant}) {
       password: password
       }
     }).then((response)=>{
-      console.log(response); // pour voir si erreur
-    });
+    window.location.assign('/login'); 
+    }).catch((err)=>{
+      console.log(err);
+    })
   };
 
   return (
@@ -66,14 +67,15 @@ function Signup({variant}) {
           <p id="length">Entre 8 et 10 caractères</p>
         </div>
       </form>
+
       <button type="submit"
       onClick={signup}
       className="btn btn-secondary mb-2">
         JE M'INSCRIS
-        {redirection&&<Redirect to ="/post" />}
       </button>
+
     </div>
     </div>
   )
 }
-export default withRouter (Signup) // Router ok ou en trop?
+export default Signup // Router ok ou en trop?
