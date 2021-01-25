@@ -1,3 +1,5 @@
 ## Vulnérabilités du site
 Une attaque par injection SQL consiste en l'insertion ou «injection» d'une requête SQL via les données d'entrée du client vers l'application. Une injection SQL réussie peut lire des données sensibles de la base de données, modifier les données de la base de données (Insérer / Mettre à jour / Supprimer), exécuter des opérations d'administration sur la base de données (comme l'arrêt du SGBD), récupérer le contenu d'un fichier donné présent sur le fichier SGBD système et, dans certains cas, émettre des commandes vers le système d'exploitation. Les attaques par injection SQL sont un type d'attaque par injection, dans lequel des commandes SQL sont injectées dans l'entrée du plan de données afin d'effectuer l'exécution de commandes SQL prédéfinies.
 
+## Nodejs et les injections
+Ne jamais utiliser des chaînes de modèle JavaScript ou une concaténation de chaînes pour injecter des valeurs dans les requêtes, car cela ouvre  l'application à un large éventail de vulnérabilités. 
