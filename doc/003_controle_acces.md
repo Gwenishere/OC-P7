@@ -1,0 +1,5 @@
+## Vulnérabilités du site
+L'exploitation du contrôle d'accès est une compétence fondamentale des attaquants. Les outils SAST et DAST peuvent détecter l'absence de contrôle d'accès mais ne peuvent pas vérifier s'il est fonctionnel lorsqu'il est présent. Le contrôle d'accès est détectable à l'aide de moyens manuels, ou éventuellement par automatisation pour l'absence de contrôles d'accès dans certains cadres.
+
+## Nodejs et le controle d'accès
+Lors de l'utilisation de jetons JWT (par exemple, avec Passport.js ), par défaut, il n'y a pas de mécanisme pour révoquer l'accès des jetons émis. Une fois que vous avez découvert une activité utilisateur malveillante, il n'y a aucun moyen de les empêcher d'accéder au système tant qu'ils détiennent un jeton valide. Atténuez cela en implémentant une liste noire de jetons non approuvés qui sont validés à chaque demande.
