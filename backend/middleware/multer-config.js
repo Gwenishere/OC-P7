@@ -1,4 +1,6 @@
 const multer = require('multer'); // importation du module
+
+
 // DICTIONNAIRE D IMAGES RECUES
 const MIME_TYPES = {
   'image/png': 'png',
@@ -19,4 +21,4 @@ const storage = multer.diskStorage({
     }
 });
 // export du module objet storage, méthode single
-module.exports = multer({ storage: storage }).single('image');
+module.exports = multer({ storage: storage }).single('attachment');
