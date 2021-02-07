@@ -1,21 +1,40 @@
-const express = require("express");
-const app = express();
-const mysql = require("mysql");
-const { default: User } = require("../entity/user");
+const bcrypt = require('bcrypt');
+const jwt = require('jwt');
+const mysql = require("mysql"); // installé
+const { default: User } = require("../entity/user"); // comment s'en servir ?
+const db = require('../config/db'); // pour rappel de la table
 
+class UserManager {
+  constructor() {}
+  signup(sqlInsert) {
+    let sql = '';
+    sql = mysql.format(sql, sqlInsert);
+    return new Promise((resolve, reject) => {
+        db.query(sql, function (err, result) {
+            db.query(sql, function (err, result) {
 
+            })
+        })
+    })
+  }
 
-exports.getAll = () => {
-    // ici on fait la requete
-/*.then((results) => {
-    let listUser = [];
-    for(let user of results) {
-        listUser.push(new User(user));
-    }
-    return listUser;
-})*/
+  login(sqlInsert) {
+    let sql = '';
+    sql = mysql.format(sql, sqlInsert);
+    return new Promise((resolve, reject) => {
+
+    })
+  }
+  getOneUser(sqlInsert) {
+
+  }
+  getAllUsers(sqlInsert) {
+
+  }
+  deleteUser(sqlInsert) {
+
+  }
+
 }
 
-/**TODO: 
- * finir la fonction. Mais que mettre ??? pas compris 
- */
+module.exports = UserManager;

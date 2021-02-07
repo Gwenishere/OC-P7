@@ -3,11 +3,12 @@ const express = require('express');
 const router = express.Router();
 const userCtrl = require('../controllers/user');
 const db = require('../config/db');
-
-// routes post
+const auth = require('../middleware/auth');
 
 router.post('/signup', userCtrl.signup);
 router.post('/login', userCtrl.login);
-
+router.get('/profile', auth, userCtrl.getOneUser);
+router.get('/profiles', auth, userCtrl.getAllUsers);
+router.delete('/profile', auth, userCtrl.deleteUser );
 
 module.exports = router; 
