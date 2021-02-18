@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Kufam:wght@600&display=swap');
+
+.App-pagenotfound {
+    min-height: 150vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    background: linear-gradient(-45deg, #191714, #2234ae, #23a6d5, #F2D16B);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+  h1 {
+    font-family: 'Kufam', cursive;
+  }
+
+ .erreurmsg {
+    padding: 32px;
+    margin-bottom: 32px;
+ }
+
+ .buttonreturn {
+    border-radius: 40px;
+    background: #d1515acc;
+    padding: 16px;
+    font-family: 'Kufam', cursive;
+    color:#ffffff;
+    letter-spacing:1px;
+    transition:all .5s ease;
+ }
+
+ .buttonreturn:hover{
+    box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
+ }

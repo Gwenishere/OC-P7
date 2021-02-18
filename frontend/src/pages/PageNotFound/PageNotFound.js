@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import "./PageNotFound.css";
+
 function PageNotFound() {
     const returnBtn = () => {
         console.log('retour homepage');
@@ -8,6 +10,7 @@ function PageNotFound() {
     return (
         <div>
          <div className="App-pagenotfound">
+            <div className="erreurmsg">
           <h1>
               Erreur 404 - Oops, page non trouvée
           </h1>
@@ -17,8 +20,9 @@ function PageNotFound() {
           <p>
               Revenez vers le site, vous nous manquez déjà !
           </p>
+          </div>
           <Link to="/">
-          <button type="button" className="btn btn-outline-light"onClick={returnBtn}>Je reviens !
+          <button type="button" className="buttonreturn"onClick={returnBtn}>Je reviens !
           </button>
           </Link>
         </div>
