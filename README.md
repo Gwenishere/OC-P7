@@ -6,7 +6,7 @@
   </p>
   <p>Utilisation de phpMyAdmin pour les bases de données</p>
   
-  <p>App.js : résumé des points principaux pour l'élaboration du projet</p>
+  <p>App.md : résumé des points principaux pour l'élaboration du projet</p>
   <br>
   <p>Sources utilisées :</p>
   <ul>
