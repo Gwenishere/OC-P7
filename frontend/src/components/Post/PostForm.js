@@ -1,16 +1,25 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Axios from 'axios';
-
+import SearchIcon from "@material-ui/icons/Search";
+import PhotoLibraryOutlinedIcon from '@material-ui/icons/PhotoLibraryOutlined';
+import EmojiPeopleOutlinedIcon from '@material-ui/icons/EmojiPeopleOutlined';
 
 import "./PostForm.css";
 import HeaderSite from '../Header/HeaderSite';
+import InputOption from '../Input/InputOption';
+import Posts from '../Posts/Posts';
 
 const Post =(props) => {
 
+    const [posts, setPosts] = useState([]);
+   /**FIXME: remplacer par const [posts, setPosts] */
     let [title , setTitle] = useState('');
     let [description , setDescription] = useState('');
     let [file , setFile] = useState('');
-    const el = useRef(); // accesing input element
+
+    const elFile = useRef(); // accesing input element
+    const elDescription = useRef(); //
+
 
     const handleChange = e => {
       const file = e.target.files[0]; // accessing file
@@ -28,62 +37,78 @@ const Post =(props) => {
       file: file
       }
     }).then((response)=>{
-        window.location.assign('/posts'); 
+        window.location.assign('/post'); 
         }).catch((err)=>{
           console.log(err);
     });
   };
    
+//** */ useEffect**//
+
+
     return (
-      <div>
+      <div className="post_main">
         <HeaderSite/>
         <div className="post">
-            <div className="post_top">
-             <div className="post_topInfo">
-               <h1>Discutons, échangeons</h1>
-              <h2 className="accueil">Bonjour{props.name}, partagez ici vos idées ou passions</h2>
-             </div>
-            </div>
+          <div className="header_search">
+            <SearchIcon color="primary" fontSize="large"/>
+            <input type="text" placeholder="Recherche" />
+          </div>
             <form className="post-form" method="post">
-                <div className="col-md-5 mx-auto">
+                <div className="post_container">
                   <img src={props.profilePic} className="post_avatar" alt=""/>
-                  <label htmlFor="title">Titre</label>
+                  <label htmlFor="title" className="post_title"></label>
                   <input
-                  className="form-control col-12 rounded animated"        
+                  className="form_inputtitle"        
                   id="title"
                   name="title"
-                  placeholder="Titre"
+                  placeholder="Donnez un titre"
                   required={true}
+                  ref={elDescription}
                   type="text"
                   onChange={(e) => {
                     setTitle(e.target.value);
                   }}
                   />
                   
-								<label htmlFor="description">Votre publication...</label>
+								<label htmlFor="description"></label>
                   <textarea
-                  className="form-control col-12 rounded animated"
+                  className="form_inputdescription editor"
                   formcontrolname="description"
                   id="description"
                   name="description"
                   placeholder="Que voulez-vous dire ?"
                   required={true}
-                  rows="5"
-                  type="textarea"
+                  role="textbox"
                   onChange={(e) => {
                     setDescription(e.target.value);
                 }}
                   >    
                   </textarea>
                   <div className="form-group">
-                  <label className="custom-file-upload" htmlFor="picture" />
+                  <div className="postForm_inputOptions">
+                    <InputOption className="inputOption"
+                    Icon={PhotoLibraryOutlinedIcon}
+                    color="#00A400"
+                    title="Photo"
+                    />
+                    <InputOption className="inputOption"
+                    Icon={EmojiPeopleOutlinedIcon}
+                    color="#FA383E"
+                    title="Gif"
+                    />
+                   </div>
+                  <label className="file" htmlFor="picture">
                   <input
+                  id="file"
                   accept="image/*"
                   type="file"
-                  ref={el}
+                  aria-label="File browser image"
+                  ref={elFile}
                   onChange={handleChange} />
+                    <span className="file-custom"></span>
+                  </label>
                   <div className="details">
-                  <p>nom du fichier: {file.name}</p>
                   <p>type d'image téléchargée: {file.type}</p>
                   <p><strong>Formats supportés :</strong> gif, jpg, jpeg, png</p>
                   </div>
@@ -93,13 +118,21 @@ const Post =(props) => {
                    className="button-post"
                    onClick={publish}
                    >
-                   PUBLIER
+                   Publier
                    </button>
                   </div>
                   </div>
                 </div>
               </form>
             </div>
+            {posts.map(() => {
+              <Post />
+            })}
+            <Posts 
+            title="Un post de folie !!!"
+            description="je tente de cloner LinkedIn"
+            file="une pièce jointe"
+            /> 
             </div>
     )
   
