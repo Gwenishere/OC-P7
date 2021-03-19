@@ -7,6 +7,8 @@ class User {
      this.username= user.username;
      this.email = user.email;
      this.password = user.password;
+     this.registration = user.registration;
+     this.user_admin = user.user_admin;
     }
     checkpassword () {
         var regex = new RegExp("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}");
