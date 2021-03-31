@@ -1,9 +1,12 @@
-const db = require('../config/db'); // pour rappel de la table
+const db = require('../../config/db'); // pour rappel de la table
 const mysql = require('mysql'); // installé
 
-/**FIXME: routes vers tables */
+// TRANSMISSION DONNEES VERS TABLE comment
+
 class CommentManager {
-  constructor() {}
+  constructor() {
+    console.log('CommentManager initialized')
+  }
 
   createComment(sqlInsert) {
     let sqlCreate = 'INSERT INTO comment VALUES(NULL, ?, NOW(), ?, ?);'
@@ -20,7 +23,7 @@ class CommentManager {
   }
 
   getAllComments(sqlInsert) {
-    let sqlGetAll = 'SELECT comment.comment_id, comment.content, DATE_FORMAT(DATE(comment.created), \'/%d.%m.%Y\') AS created FROM comment JOIN user on comment.user_id = user_id WHERE post_id = ? ORDER BY created';
+    let sqlGetAll = 'SELECT comment.comment_id, comment.content, DATE_FORMAT(DATE(comment.created), \'/%d.%m.%Y\') AS created, user.user_id FROM comment JOIN user on comment.user_id = user_id WHERE post_id = ? ORDER BY created DESC';
     sqlGetAll = mysql.format(sqlGetAll, sqlInsert);
     return new Promise((resolve) =>{
       db.query(sql, function (err, result, fields){
@@ -35,8 +38,8 @@ class CommentManager {
     return new Promise((resolve, reject) =>{
       db.query(sql1, function (err, result, fields){
         if (err) throw err;
-        if(sqlInsert2[1] == result[0].userId){
-          let sql2 = 'DELETE FROM comment WHERE post_id = ? AND user_id = ?';
+        if(sqlInsert2[1] == result[0].user_id){
+          let sql2 = 'DELETE FROM comment WHERE comment_id = ? AND user_id = ?';
           sql2 = mysql.format(sql2, sqlInsert2);
           db.query(sql2, function (err, result, fields){
             if (err) throw err;
@@ -68,9 +71,6 @@ class CommentManager {
       })
     });
 }   
-
-
-
 
 }
 

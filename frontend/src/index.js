@@ -1,6 +1,6 @@
 import React from 'react'; //ok
 import ReactDOM from 'react-dom'; // ok
-import './index.css';
+
 import App from './App';
 
 

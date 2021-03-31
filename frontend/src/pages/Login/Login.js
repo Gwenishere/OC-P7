@@ -1,74 +1,93 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from 'axios';
-import { Link } from 'react-router-dom';
-import "./Login.css";
-import Header from '../Header/Header';
+import { NavLink, Redirect } from "react-router-dom";
 
+import "./Login.css";
+import Header from '../../components/Header/Header';
 import SigninPic from '../../uploads/signin-image.jpg';
 
 function Login() {
 
     const [email , setEmail] = useState('');
     const [password , setPassword] = useState('');
+    const [isLoggedIn , setIsLoggedIn] = useState(false);
+    
 
     const login = () => {
         Axios.post('http://localhost:3000/user/login', {
-          user: {
-          email: email,
-          password: password
-          }
+        user: {
+        email: email,
+        password: password
+        }
         }).then((response)=>{
-            window.location.assign('/post'); 
-            }).catch((err)=>{
-              console.log(err);
-//console.log(response.data); // pour voir si erreur et réponse back
+            console.log(response.data);
+            localStorage.getItem('email');
+            
+          })
+          .catch((err)=>{
+            console.log('message axios : ' + err);
         });
       };
+
+      useEffect(() => {
+         console.log(email);
+         console.log(password);
+      }, [email, password]);
+
+      const onSubmit = e =>{
+        e.preventDefault()
+        console.log('hello de onsubmit login')
+        return(isLoggedIn?<Redirect to={"/post"} />:null)
+        setIsLoggedIn();
+      }
 
         return (
             <div>
             <Header/>
-            <div className="myform form col-md-7 mx-auto">
-            <div className="left-form">
-             <form  method="post">
-              <div className="col-md-12 text-center cardtitle">
-				<h1>Connexion</h1>
-			  </div>
-                <div className="form-group">
-                    <label htmlFor="email">Votre email</label>
-                    <input type="email"
-                    onChange={(e) => {
+            <div className="login_myform">
+              <div className="left-form">
+                <form method="post"> 
+                  <div className="col-md-12 text-center cardtitle">
+				    <h1>Connexion</h1>
+			      </div>
+                  <div className="form-group">
+                     <label htmlFor="email">Votre email</label>
+                     <input
+                       type="email"
+                        onChange={(e) => {
                         setEmail(e.target.value);
-                    }}
-                    name="email"
-                    required={true}
+                        }}
+                        name="email"
+                        required={true}
+                        value={email}
                     />
-                </div>
-                <div className="form-group">
+                  </div>
+                  <div className="form-group">
                     <label htmlFor="password">Mot de passe</label>
                     <input
-                    type="password"
-                    onChange={(e) => {
+                      type="password"
+                      onChange={(e) => {
                         setPassword(e.target.value);
-                    }}
-                    required={true}
-                    id="password"
+                      }}
+                      required={true}
+                      value={password}
+                      id="password"
                     />
-                </div>
-                <div className="form-group">
-                    <div className="custom-control custom-checkbox">
+                  </div>
+                  <div className="form-group">
+                    <div className="custom-control">
                         <input
                         type="checkbox"
-                        className="custom-control-input"
+                        className="custom-checkbox"
                         id="customCheck1"
                         />
                         <label
-                        className="custom-control-label"
+                        className="checkmark"
                         htmlFor="customCheck1">
-                            Se souvenir de moi
+                            Mémoriser
                         </label>
                     </div>
-                </div>
+                  </div>
                 <div>
                   <small
                   id="emailHelp"
@@ -77,22 +96,24 @@ function Login() {
                   </small>
                 </div>
                 <button
-                className="button-click"
-                type="submit"
-                onClick={login}
-                 >
+                  className="button-click"
+                  onClick={onSubmit}
+                  type="submit">
                  SE CONNECTER
                 </button>
                 <p className="forgot-password text-right">
-                    Oubli <a href="www.google.fr">du mot de passe ?</a>
+                    Pas de encore inscrit ?
                 </p>
-             </form>
-             </div>
-             <div className="right-form">
-        <img src={SigninPic} alt="" />
-      </div>
+                <NavLink to ="/signup">J'y vais !</NavLink>
+
+               </form>
+              </div>
+               <div className="right-form">
+                 <img src={SigninPic} alt="" />
+               </div>
             </div>
-            </div>
+           
+        </div>
         );
 }
 

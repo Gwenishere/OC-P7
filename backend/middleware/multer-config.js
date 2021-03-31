@@ -1,5 +1,6 @@
 const multer = require('multer'); // importation du module
 
+/**FIXME: file ou attachment ? */
 
 // DICTIONNAIRE D IMAGES RECUES
 const MIME_TYPES = {

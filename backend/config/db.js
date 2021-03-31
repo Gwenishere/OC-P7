@@ -13,3 +13,4 @@ db.connect(error => {
   console.log("Connection réussie à la base de donnée");
 });
 module.exports = db;
+

@@ -1,27 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../App.css';
+import './Header.css';
 import Logo from '../../assets/images/icon-left-font-monochrome-white.svg';
-import 'bootstrap/dist/css/bootstrap.css';
+
+
+import Signout from '../Signout/Signout'
 
  function Header() {
   return(
-  <nav className="navbar navbar-expand-md navbar-dark">
+  <nav className="header">
     <Link to="/">
-      <img src={Logo}/>
+      <img className="header_logo" alt="" src={Logo}/>
     </Link>
-    <div className="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul className="navbar-nav">
-      <Link className="nav-link" to="/login">
-        <button type="button" className="btn btn-outline-info mb-2">
-        <li className="nav-item">Connexion</li>
+    <div className="navbar">
+      <ul className="navbar_links">
+      <Link className="navbar_link" to="/login">
+        <button type="button" className="btn_connexion">
+        <li className="link_item">Se connecter</li>
       </button>
        </Link>
-       <Link className="nav-link " to="/signup">
-        <button type="button" className="btn btn-secondary mb-2">
-        <li className="nav-item">Inscription</li>
+       <Link className="navbar_link " to="/signup">
+        <button type="button" className="btn_inscription">
+        <li className="link_item">S'inscrire</li>
         </button>
        </Link>
+       <Signout/>
       </ul>
       </div>
   </nav>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import "./PageNotFound.css";
+import PageNotFoundDesign from "../../uploads/Astronaut.png"
 
 function PageNotFound() {
     const returnBtn = () => {
@@ -9,25 +10,28 @@ function PageNotFound() {
     }
     return (
         <div>
-         <div className="App-pagenotfound">
-            <div className="erreurmsg">
-          <h1>
-              Erreur 404 - Oops, page non trouvée
-          </h1>
-          <h2>
-              Vous cherchez une page qui n'existe pas pour le moment.
-          </h2>
-          <p>
-              Revenez vers le site, vous nous manquez déjà !
-          </p>
-          </div>
-          <Link to="/">
-          <button type="button" className="buttonreturn"onClick={returnBtn}>Je reviens !
-          </button>
-          </Link>
-        </div>
+            <div className="App-pagenotfound">
+            
+                <div className="erreur_text twinkling">
+               
+                  <h1 className="erreur_title">Houston, nous avons un problème</h1>
+                  <h2 className="erreur_subtitle">Erreur 404 - Page non trouvée</h2>
+                  <Link className="link_home" to="/">
+                    <button type="button" className="buttonreturn"onClick={returnBtn}>Je reviens !
+                    </button>
+                  </Link>
+                </div>
+                <div className="erreur_design">
+                <div class="meteor-1"></div>
+                <div class="meteor-2"></div>
+                <div class="meteor-3"></div>
+                <div class="meteor-4"></div>
+                <div class="meteor-5"></div>
+                  <img src={PageNotFoundDesign} alt="astronaute" />
+                </div>
+            </div>      
         </div>
     )
 }
-
+ 
 export default PageNotFound

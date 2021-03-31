@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useRef, useEffect } from 'react';
 import Axios from 'axios';
 import SearchIcon from "@material-ui/icons/Search";
@@ -9,44 +10,44 @@ import HeaderSite from '../Header/HeaderSite';
 import InputOption from '../Input/InputOption';
 import Posts from '../Posts/Posts';
 
-const Post =(props) => {
+const Post =(title, content, attachment, profilePic) => {
 
     const [posts, setPosts] = useState([]);
-   /**FIXME: remplacer par const [posts, setPosts] */
-    let [title , setTitle] = useState('');
-    let [description , setDescription] = useState('');
-    let [file , setFile] = useState('');
-
-    const elFile = useRef(); // accesing input element
-    const elDescription = useRef(); //
-
-
-    const handleChange = e => {
-      const file = e.target.files[0]; // accessing file
-      console.log(file);
-      setFile(file); // storing file
-    };
-    
-  const publish = () => {
-    const formData = new FormData();
-    formData.append("file", file); // appending file
-    Axios.post('http://localhost:3000/user/post', {
-      post: {
-      title: title,
-      description: description,
-      file: file
-      }
-    }).then((response)=>{
-        window.location.assign('/post'); 
-        }).catch((err)=>{
-          console.log(err);
-    });
-  };
    
-//** */ useEffect**//
+    useEffect(() => {
+      Axios.get('http://localhost:3000/post/getallposts', {
+        headers: {
+          Authorization: localStorage.getItem("token")
+        }
+      }
+    , [])
+      .then((res) => {
+        console.log(res) /**TODO: res headers si oui affiche console.log, puis il faudra convertir en json ou bien direct setPosts */
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+    });
+
+    const elAttachment = useRef(); // accès au input element
+    const elContent = useRef(); //
 
 
-    return (
+
+    
+  const publish = e => {
+    e.preventDefault();  
+    Axios.post('http://localhost:3000/post/createpost', {
+      post : {
+        title: e.target.title,
+        content: e.target.content,
+        attachment: e.target.attachment,
+      }
+    })
+    
+  };
+  
+   return (
       <div className="post_main">
         <HeaderSite/>
         <div className="post">
@@ -56,7 +57,7 @@ const Post =(props) => {
           </div>
             <form className="post-form" method="post">
                 <div className="post_container">
-                  <img src={props.profilePic} className="post_avatar" alt=""/>
+                  <img src={profilePic} className="post_avatar" alt=""/>
                   <label htmlFor="title" className="post_title"></label>
                   <input
                   className="form_inputtitle"        
@@ -64,11 +65,8 @@ const Post =(props) => {
                   name="title"
                   placeholder="Donnez un titre"
                   required={true}
-                  ref={elDescription}
+                  ref={elContent}
                   type="text"
-                  onChange={(e) => {
-                    setTitle(e.target.value);
-                  }}
                   />
                   
 								<label htmlFor="description"></label>
@@ -80,9 +78,6 @@ const Post =(props) => {
                   placeholder="Que voulez-vous dire ?"
                   required={true}
                   role="textbox"
-                  onChange={(e) => {
-                    setDescription(e.target.value);
-                }}
                   >    
                   </textarea>
                   <div className="form-group">
@@ -103,13 +98,13 @@ const Post =(props) => {
                   id="file"
                   accept="image/*"
                   type="file"
+                  name="file"
                   aria-label="File browser image"
-                  ref={elFile}
-                  onChange={handleChange} />
+                  ref={elAttachment}
+                  />
                     <span className="file-custom"></span>
                   </label>
                   <div className="details">
-                  <p>type d'image téléchargée: {file.type}</p>
                   <p><strong>Formats supportés :</strong> gif, jpg, jpeg, png</p>
                   </div>
                   <div className="button-group">
@@ -126,13 +121,11 @@ const Post =(props) => {
               </form>
             </div>
             {posts.map(() => {
-              <Post />
+              <Post 
+              title={title}
+              content={content}
+              attachment={attachment}/>
             })}
-            <Posts 
-            title="Un post de folie !!!"
-            description="je tente de cloner LinkedIn"
-            file="une pièce jointe"
-            /> 
             </div>
     )
   

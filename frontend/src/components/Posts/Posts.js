@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import Axios from 'axios';
 import "./Posts.css";
 import HeaderSite from '../Header/HeaderSite';
 import PostForm from '../Post/PostForm';
@@ -8,15 +9,23 @@ import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
 import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
 import PanToolOutlinedIcon from '@material-ui/icons/PanToolOutlined';
 
-function Posts (title, description, file) {
+function Posts (title, content, attachment) {
 
-/**schéma données en array 
- * posts []
- * et ensuite les éléments props en {} dans le html du return
-*/
-/** dans return > profile.isAdmin || profile.id === post.UserId ? DeleteIcon */
+  /**  useEffect(() => {
+        Axios.get('http://localhost:3000/user/post', {
+         get: {
+         title: title,
+         content: content,
+         attachement: attachment
+         }
+        }
+      , [])
+      .then((res) => {
+        console.log(res)
+      })
+    }); */
 
-/**axios */
+
     return (
 
             <div className="posts">
@@ -28,10 +37,10 @@ function Posts (title, description, file) {
              </div>
            </div>
            <div className="posts_body">
-               <p>description</p>
+               <p>content</p>
            </div>
            <div className="posts_attachment">
-               file
+               attachment
            </div>
            <div className="posts_buttons">
             <InputOption

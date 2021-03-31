@@ -1,8 +1,8 @@
-
+// eslint-disable-next-line
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Axios from 'axios';
-import Header from '../Header/Header';
+import Header from '../../components/Header/Header';
 
 import './Signupstyle.css';
 import SignupPic from '../../uploads/signup-image.jpg';
@@ -14,7 +14,6 @@ function Signup() {
   const [password, setPassword] = useState(''); //initialisation des valeurs d'état d'e-mail et de mot de passe à l'aide du hook useState
   const [user_id, setuser_id] = useState('');
  
-  //**FIXME: je laisse l'objet ainsi ??, pas compris ! */
   const signup = () => {
     Axios.post('http://localhost:3000/user/signup', {
       user:{
@@ -24,9 +23,11 @@ function Signup() {
       user_id: false   // à revoir 
       }
     }).then((response)=>{
-    window.location.assign('/login'); 
+    console.log(response.user.data);
+    window.location.assign('/login');
     }).catch((err)=>{
-      console.log(err);
+      console.log(err.message);
+      console.log('message axios post signup')
     })
   };
 

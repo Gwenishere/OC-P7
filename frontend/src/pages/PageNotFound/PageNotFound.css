@@ -1,18 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Kufam:wght@600&display=swap');
 
 .App-pagenotfound {
-    min-height: 150vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-    background: linear-gradient(-45deg, #191714, #2234ae, #23a6d5, #F2D16B);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
-}
+    justify-content: space-evenly;
+    background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+    z-index:0;
 
+   /* background: linear-gradient(-45deg, #191714, #2234ae, #23a6d5, #F2D16B);
+	 background-size: 400% 400%;
+	 animation: gradient 15s ease infinite;
+}
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
@@ -22,27 +19,228 @@
 	}
 	100% {
 		background-position: 0% 50%;
-	}
+	}*/
 }
-  h1 {
+
+.twinkling{
+  background:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+  z-index:1;
+
+  -moz-animation:move-twink-back 200s linear infinite;
+  -ms-animation:move-twink-back 200s linear infinite;
+  -o-animation:move-twink-back 200s linear infinite;
+  -webkit-animation:move-twink-back 200s linear infinite;
+  animation:move-twink-back 200s linear infinite;
+}
+
+@keyframes move-twink-back {
+  from {background-position:0 0;}
+  to {background-position:-10000px 5000px;}
+}
+@-webkit-keyframes move-twink-back {
+  from {background-position:0 0;}
+  to {background-position:-10000px 5000px;}
+}
+@-moz-keyframes move-twink-back {
+  from {background-position:0 0;}
+  to {background-position:-10000px 5000px;}
+}
+@-ms-keyframes move-twink-back {
+  from {background-position:0 0;}
+  to {background-position:-10000px 5000px;}
+}
+
+ .erreur_title, .erreur_subtitle, .link_home {
     font-family: 'Kufam', cursive;
+    text-align: center;
+    color: #ffffff;
   }
 
- .erreurmsg {
-    padding: 32px;
-    margin-bottom: 32px;
+ .erreur_text {
+    flex: 0.7;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
  }
 
  .buttonreturn {
-    border-radius: 40px;
-    background: #d1515acc;
+    border: none;
+    background: rgb(153, 173, 249) ;
     padding: 16px;
     font-family: 'Kufam', cursive;
+    font-size: 16px;
     color:#ffffff;
-    letter-spacing:1px;
-    transition:all .5s ease;
+    width: 160px;
+    height: 80px;
+    position: relative;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 50px;
+    cursor: pointer;
  }
 
- .buttonreturn:hover{
-    box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
+.buttonreturn:before {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  border: solid 0 transparent;
+  border-right: solid 3.5em rgb(153, 173, 249);
+  border-bottom: solid .25em #629bdd;
+  bottom: .25em; left: 1.25em;
+  width: 0; height: 1em;
+  transform: rotate(45deg) skewX(75deg);
+}
+
+.buttonreturn:hover {
+  color: #223852;
+
+}
+
+ .erreur_design {
+    flex: 0.5;
+
+    animation: float 2s infinite ease-in-out;
  }
+
+ @keyframes float {
+   0% {
+     transform: translateY(0);
+     -webkit-transform: translateY(0);
+   }
+ 
+   50% {
+     transform: translateY(1rem);
+     -webkit-transform: translateY(1rem);
+   }
+ 
+   100% {
+     transform: translateY(0);
+     -webkit-transform: translateY(0);
+   }
+ }
+ 
+ .erreur_design > img {
+   width: 100%;
+   height: auto;
+   padding: 30px;
+}
+
+.meteor-1 {
+  position: absolute;
+  top: 192px;
+  left: 68%;
+  width: 300px;
+  height: 1px;
+  transform: rotate(-45deg);
+  background-image: linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
+  animation: meteor 5.2s linear infinite;
+}
+.meteor-1:before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 5px;
+  border-radius: 50%;
+  margin-top: -2px;
+  background: rgba(255, 255, 255, .7);
+  box-shadow: 0 0 15px 3px #fff;
+}
+.meteor-2 {
+  position: absolute;
+  top: 285px;
+  left: 32%;
+  width: 300px;
+  height: 1px;
+  transform: rotate(-45deg);
+  background-image: linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
+  animation: meteor 7.5s linear infinite;
+}
+.meteor-2:before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 5px;
+  border-radius: 50%;
+  margin-top: -2px;
+  background: rgba(255, 255, 255, .7);
+  box-shadow: 0 0 15px 3px #fff;
+}
+.meteor-3 {
+  position: absolute;
+  top: 94px;
+  left: 82%;
+  width: 300px;
+  height: 1px;
+  transform: rotate(-45deg);
+  background-image: linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
+  animation: meteor 6s linear infinite;
+}
+.meteor-3:before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 5px;
+  border-radius: 50%;
+  margin-top: -2px;
+  background: rgba(255, 255, 255, .7);
+  box-shadow: 0 0 15px 3px #fff;
+}
+.meteor-4 {
+  position: absolute;
+  top: 254px;
+  left: 56%;
+  width: 300px;
+  height: 1px;
+  transform: rotate(-45deg);
+  background-image: linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
+  animation: meteor 8.5s linear infinite;
+}
+.meteor-4:before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 5px;
+  border-radius: 50%;
+  margin-top: -2px;
+  background: rgba(255, 255, 255, .7);
+  box-shadow: 0 0 15px 3px #fff;
+}
+.meteor-5 {
+  position: absolute;
+  top: 100px;
+  left: 86%;
+  width: 500px;
+  height: 2px;
+  transform: rotate(-45deg);
+  background-image: linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
+  animation: meteor 10s linear infinite;
+}
+.meteor-5:before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 6px;
+  border-radius: 50%;
+  margin-top: -2px;
+  background: rgba(255, 255, 255, .7);
+  box-shadow: 0 0 15px 3px #fff;
+}
+
+@keyframes meteor {
+  0% {
+    opacity: 1;
+    margin-top: -300px;
+    margin-right: -300px;
+ }
+  12% {
+    opacity: 0;
+ }
+  15% {
+    margin-top: 300px;
+    margin-left: -600px;
+    opacity: 0;
+ }
+  100% {
+    opacity: 0;
+ }
+}
