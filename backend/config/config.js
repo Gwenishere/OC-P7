@@ -3,5 +3,5 @@ module.exports = {
   HOST: "localhost",
   USER: "root",
   PASSWORD: "",
-  DB: "groupomania_dev"
+  DB: "groupomania_dev",
 };
