@@ -2,7 +2,7 @@
 <h1>Projet 7 : création d'un réseau social d'entreprise</h1>
 <p>
   Frontend avec <strong>Reactjs</strong> sur : http://localhost:4200/ <br>
-  Backend avec <strong>NodeJs</strong> sur : http://localhost:3000/
+  Backend avec <strong>NodeJs avec requêtes mysql</strong> sur : http://localhost:3000/
   </p>
   <p>Utilisation de phpMyAdmin pour les bases de données</p>
   
@@ -11,5 +11,6 @@
   <p>Sources utilisées :</p>
   <ul>
   <li>React documentation</li>
+  <li>React router</li>
   <li>W3School</li>
   <li>Liens vers cours conseillés dans la page React</li>
