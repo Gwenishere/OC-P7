@@ -9,3 +9,8 @@ app.get pour obtenir les requêtes,
 
 #### Documentation : https://expressjs.com/fr/api.html
 
+#### Pour installer mysql
+
+### `npm install --save mysql`
+
+
