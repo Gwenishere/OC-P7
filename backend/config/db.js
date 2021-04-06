@@ -9,7 +9,10 @@ const db = mysql.createConnection({
 });
 //Connection à phpMyAdmin mysql
 db.connect((error) => {
-  if (error) throw error;
-  console.log("Connection réussie à la base de donnée");
+  if (error) {
+    console.error("erreur de connection : " + error.stack);
+    return;
+  } 
+  console.log("message de db.js : Connection réussie à la base de donnée");
 });
 module.exports = db;
